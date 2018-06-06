@@ -7,17 +7,13 @@ import org.springframework.web.client.RestTemplate;
 import java.util.concurrent.Callable;
 
 @RestController
-public class MyController {
-
-    @GetMapping(value = "/ruleTheWorld")
+public class MyCallableController {
+    @GetMapping(value = "/ruleTheWorldAsync")
     public Callable<String> rule(){
-        System.out.println("Start thread id: " + Thread.currentThread().getName());
-        Callable<String> callable = () -> {
-            String url = "http://localhost:8090/sleep/2000";
+        return () -> {
+            String url = "http://localhost:8090/sleep/1000";
             new RestTemplate().getForObject(url, Boolean.TYPE);
             return "Ruling...";
         };
-
-        return callable;
     }
 }

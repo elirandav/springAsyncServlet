@@ -26,5 +26,5 @@ class RuleTheWorldBlockingSimulation extends Simulation {
       .get("/ruleTheWorldBlocking")
       .headers(headers_0))
 
-  setUp(scn.inject(constantUsersPerSec(20) during (30 seconds))).protocols(httpProtocol)
+  setUp(scn.inject(constantUsersPerSec(20) during (60 seconds))).protocols(httpProtocol)
 }

@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 public class MyControllerBlocking {
     @GetMapping(value = "/ruleTheWorldBlocking")
     public String rule() {
-        String url = "http://localhost:8090/sleep/2000";
+        String url = "http://localhost:8090/sleep/1000";
         new RestTemplate().getForObject(url, Boolean.TYPE);
         return "Ruling blocking...";
     }

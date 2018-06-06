@@ -6,7 +6,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.jdbc.Predef._
 
-class RuleTheWorldSimulation extends Simulation {
+class RuleTheWorldAsyncSimulation extends Simulation {
 
   val httpProtocol = http
     .baseURL("http://localhost:8080")
@@ -21,10 +21,10 @@ class RuleTheWorldSimulation extends Simulation {
 
   val uri1 = "http://localhost:8080/ruleTheWorld"
 
-  val scn = scenario("TweetsBlockingSimulation")
+  val scn = scenario("ruleTheWorldAsync")
     .exec(http("request_0")
-      .get("/ruleTheWorld")
+      .get("/ruleTheWorldAsync")
       .headers(headers_0))
 
-  setUp(scn.inject(constantUsersPerSec(20) during (30 seconds))).protocols(httpProtocol)
+  setUp(scn.inject(constantUsersPerSec(20) during (60 seconds))).protocols(httpProtocol)
 }
