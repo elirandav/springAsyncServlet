@@ -16,8 +16,7 @@ public class DeferredResultVsCompletableController {
         DeferredResult<Boolean> deferredResult = new DeferredResult<>();
         deferredResult.onCompletion(() -> System.out.println("log result... " + threadName()));
         ForkJoinPool.commonPool().submit(() -> {
-            processRequest();
-            deferredResult.setResult(true);
+            deferredResult.setResult(processRequest());
         });
         System.out.println("Return deferredResult " + threadName());
         return deferredResult;
